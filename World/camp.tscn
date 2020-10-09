@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://World/campesinoAnimado.png" type="Texture" id=1]
+[ext_resource path="res://Text/orange juice.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://back.png" type="Texture" id=3]
+[ext_resource path="res://World/camp.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 40, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 40, 0, 40, 64 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 9.0
+height = 8.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 32.0156
+
+[sub_resource type="DynamicFont" id=5]
+size = 12
+font_data = ExtResource( 2 )
+
+[node name="camp" type="StaticBody2D"]
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 4, -3 )
+scale = Vector2( 0.625, 0.5625 )
+frames = SubResource( 3 )
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )
+
+[node name="hurtcam" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtcam"]
+shape = SubResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+visible = false
+position = Vector2( 8, 120 )
+scale = Vector2( 0.983923, 0.415254 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 20.0
+margin_top = 124.0
+margin_right = 306.0
+margin_bottom = 166.0
+custom_fonts/font = SubResource( 5 )
+text = "jaime"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="hurtcam" to="." method="_on_hurtcam_area_entered"]

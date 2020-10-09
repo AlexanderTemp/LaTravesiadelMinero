@@ -1,0 +1,13 @@
+extends Label
+var ran = Puntua
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+	#self.text="Puntuación: "+str(ran.ran)
+
+func actua():
+	self.text="Puntuación: "+str(ran.ran)
+

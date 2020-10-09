@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Hit and Hurt/HurtBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/cigarro2.gd" type="Script" id=2]
+[ext_resource path="res://World/StatsCigarro2.gd" type="Script" id=3]
+[ext_resource path="res://World/cigarroLlenoMov.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 9.0
+height = 0.0
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 52, 45 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 45, 52, 45 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 90, 52, 45 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 4.0
+height = 0.0
+
+[node name="cigarro2" type="KinematicBody2D"]
+collision_layer = 17
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 1 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 9, 18 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 8 )
+scale = Vector2( 0.346154, 0.422222 )
+frames = SubResource( 5 )
+playing = true
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 9, 18 )
+shape = SubResource( 6 )
+
+[node name="StatsVida" type="Node" parent="."]
+script = ExtResource( 3 )
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+
+[editable path="HurtBox"]

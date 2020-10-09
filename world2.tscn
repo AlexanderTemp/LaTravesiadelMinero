@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://world2.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/MInero.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/coca2.tscn" type="PackedScene" id=4]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="MInero" parent="YSort" instance=ExtResource( 3 )]
+position = Vector2( 160, 80 )
+
+[node name="Bat" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 64, 56 )
+
+[node name="Bat2" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 72, 160 )
+
+[node name="coca2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 224, 112 )
+
+[node name="gui" type="CanvasLayer" parent="."]
+
+[node name="puntos" type="Label" parent="gui" groups=[
+"puntos",
+]]
+anchor_left = 0.5
+anchor_top = 0.4
+anchor_right = 0.5
+anchor_bottom = 0.4
+margin_left = -40.0
+margin_top = -8.0
+margin_bottom = 6.0
+rect_scale = Vector2( 2, 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

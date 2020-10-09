@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Menu/titlescreen_space_scroll.png" type="Texture" id=1]
+[ext_resource path="res://Menu/Inicio.png" type="Texture" id=2]
+[ext_resource path="res://Instrucciones.gd" type="Script" id=3]
+[ext_resource path="res://Instrucciones/Recolecta-ofrendas-ocult.png" type="Texture" id=4]
+[ext_resource path="res://Instrucciones/ControlMovil.png" type="Texture" id=5]
+[ext_resource path="res://Instrucciones/ControlTeclado.png" type="Texture" id=6]
+[ext_resource path="res://Instrucciones/Instrucciones.png" type="Texture" id=7]
+[ext_resource path="res://Menu/InicioClick.png" type="Texture" id=8]
+[ext_resource path="res://Instrucciones/Celular.png" type="Texture" id=9]
+[ext_resource path="res://Instrucciones/Computadora.png" type="Texture" id=10]
+
+[node name="Instrucciones" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 99.9062, 124.656 )
+scale = Vector2( 1.53791, 1.33277 )
+texture = ExtResource( 5 )
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 232, 125 )
+scale = Vector2( 1.38889, 1.5 )
+texture = ExtResource( 6 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 167, 17 )
+scale = Vector2( 0.4356, 0.472222 )
+texture = ExtResource( 7 )
+
+[node name="Sprite5" type="Sprite" parent="."]
+position = Vector2( 169, 58 )
+scale = Vector2( 0.550314, 0.629032 )
+texture = ExtResource( 4 )
+
+[node name="Sprite6" type="Sprite" parent="."]
+position = Vector2( 97.3125, 87.125 )
+scale = Vector2( 0.622934, 0.519737 )
+texture = ExtResource( 9 )
+
+[node name="Sprite7" type="Sprite" parent="."]
+position = Vector2( 225.75, 89.5 )
+scale = Vector2( 0.515217, 0.511111 )
+texture = ExtResource( 10 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 128.0
+margin_top = 152.0
+margin_right = 192.0
+margin_bottom = 176.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
